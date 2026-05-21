@@ -18,6 +18,8 @@ exports.handler = async function (event) {
   const payload = [
     {
       name: nome || "Lead sem nome",
+      pipeline_id: 10944619,
+      status_id: 95897035,
       custom_fields_values: [
         empresa && {
           field_code: "COMPANY_NAME",
