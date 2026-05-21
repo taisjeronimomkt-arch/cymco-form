@@ -475,6 +475,17 @@
     document.getElementById('err4').style.display = 'none'; return true;
   }
 
+  function getUTMs() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      utm_source:   params.get('utm_source')   || '',
+      utm_medium:   params.get('utm_medium')   || '',
+      utm_campaign: params.get('utm_campaign') || '',
+      utm_content:  params.get('utm_content')  || '',
+      utm_term:     params.get('utm_term')     || '',
+    };
+  }
+
   function enviar() {
     const email = document.getElementById('email').value.trim();
     const tel = document.getElementById('telefone').value.trim();
@@ -484,6 +495,7 @@
     const nome = document.getElementById('nome').value.trim();
     const empresa = document.getElementById('empresa').value.trim();
     const cnpj = document.getElementById('cnpj').value.trim();
+    const utms = getUTMs();
 
     // Envia pro Netlify Forms via fetch
     const formData = new FormData();
@@ -493,6 +505,11 @@
     formData.append('telefone', tel);
     formData.append('empresa', empresa);
     formData.append('cnpj', cnpj);
+    formData.append('utm_source',   utms.utm_source);
+    formData.append('utm_medium',   utms.utm_medium);
+    formData.append('utm_campaign', utms.utm_campaign);
+    formData.append('utm_content',  utms.utm_content);
+    formData.append('utm_term',     utms.utm_term);
 
     // Envia pro Netlify Forms
     fetch('/', { method: 'POST', body: formData }).catch(() => {});
@@ -501,7 +518,7 @@
     fetch('/api/kommo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nome, empresa, cnpj, email, telefone: tel }),
+      body: JSON.stringify({ nome, empresa, cnpj, email, telefone: tel, ...utms }),
     }).catch(() => {});
 
     // Redireciona pra página de obrigado
