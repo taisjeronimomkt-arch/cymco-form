@@ -12,8 +12,8 @@ exports.handler = async function (event) {
 
   const { nome, empresa, cnpj, email, telefone } = data;
 
-  const ACCESS_TOKEN = process.env.KOMMO_ACCESS_TOKEN;
-  const SUBDOMAIN = "cymco"; // cymco.kommo.com
+  const ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjQ4MzkzZjAzYWRhZDdkZTlhYjFmOTQxMjllODVjZGQyZWM1N2ZkNDBkYzYxMWE1MjM5YTEwZDRlMzZjNWY1OWY5ZDdmZmZlNzFhY2JmZmExIn0.eyJhdWQiOiJjZWE4YTM1Yi05YmEzLTQ2OTEtOTcxMi1hOTU1MTdhYmI1MTUiLCJqdGkiOiI0ODM5M2YwM2FkYWQ3ZGU5YWIxZjk0MTI5ZTg1Y2RkMmVjNTdmZDQwZGM2MTFhNTIzOWExMGQ0ZTM2YzVmNTlmOWQ3ZmZmZTcxYWNiZmZhMSIsImlhdCI6MTc3OTM3MDIxMywibmJmIjoxNzc5MzcwMjEzLCJleHAiOjE4MTA4NTc2MDAsInN1YiI6IjEzMDM5NDM5IiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjM0NDU1NDAzLCJiYXNlX2RvbWFpbiI6ImtvbW1vLmNvbSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJwdXNoX25vdGlmaWNhdGlvbnMiLCJmaWxlcyIsImNybSIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiMWRiNzE0MDMtNWU3Ny00MDk2LWJjYmYtNjJhYWY3NTNkZTgwIiwiYXBpX2RvbWFpbiI6ImFwaS1jLmtvbW1vLmNvbSJ9.XLSMuvUSMNhRla-GIzy7_UIrM139i-TB8EFDzpfJT6zc9MwIav8ao7icibSwDtF4BjyQtgfkM2drRx0CGe59MRBvYtng7eRCNPcOrClqHoTLbODq04_AWCtgJv-yVuM7zs5-r3hT1gJrJUzbr_JqAa9Red_Do9rYopWX1AtRqQlhf7kkWev5rvj_fvTeLjuMC57TbzlhM8wtG2EZ9sDi9mHcJ_yHehJ5yRhQcvyh7_Yl5fH3Scn8UEH0pvq-m3cykyxgjfw_qj-3z0p-Xgll9SKRE1QWIedYZh7D-NsFK74xZDRAQCPfMPXq4tzIFkgHNQABsqkNkytsAJBY49MyRA";
+  const SUBDOMAIN = "cymco";
 
   const payload = [
     {
@@ -26,7 +26,7 @@ exports.handler = async function (event) {
           values: [{ value: empresa }],
         },
         cnpj && {
-          field_code: "CF_CNPJ", // ajuste se necessário
+          field_code: "CF_CNPJ",
           values: [{ value: cnpj }],
         },
       ].filter(Boolean),
